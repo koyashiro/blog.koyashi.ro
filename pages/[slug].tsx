@@ -77,6 +77,7 @@ const Slug: NextPage<Props> = ({ post }) => {
             css={css`
               margin-left: 4px;
             `}
+            suppressHydrationWarning
           >
             {date.toDateString()}
           </span>

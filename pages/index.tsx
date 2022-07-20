@@ -50,6 +50,7 @@ const Home: NextPage<Props> = ({ posts }) => {
                   css={css`
                     margin-left: 4px;
                   `}
+                  suppressHydrationWarning
                 >
                   {date.toDateString()}
                 </span>
