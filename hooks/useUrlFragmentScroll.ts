@@ -2,7 +2,10 @@ import { useEffect } from "react";
 
 const useUrlFragmentScroll = () => {
   useEffect(() => {
-    const hash = decodeURIComponent(window.location.hash).replace("#", "");
+    let hash = decodeURIComponent(window.location.hash);
+    if (hash.startsWith("#")) {
+      hash = hash.slice(1);
+    }
     const element = document.getElementById(hash);
     element?.scrollIntoView();
   });
