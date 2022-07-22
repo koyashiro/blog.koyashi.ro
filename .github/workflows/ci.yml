@@ -2,8 +2,6 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
   pull_request:
 
 jobs:
@@ -12,10 +10,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Set $NODE_VERSION
+        run: echo "NODE_VERSION=$(jq -r '.volta.node' < package.json)" >> "$GITHUB_ENV"
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: ${{ env.NODE_VERSION }}
           cache: npm
       - name: Run npm ci
         run: npm ci
@@ -27,10 +27,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Set $NODE_VERSION
+        run: echo "NODE_VERSION=$(jq -r '.volta.node' < package.json)" >> "$GITHUB_ENV"
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: ${{ env.NODE_VERSION }}
           cache: npm
       - name: Run npm ci
         run: npm ci
@@ -42,10 +44,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Set $NODE_VERSION
+        run: echo "NODE_VERSION=$(jq -r '.volta.node' < package.json)" >> "$GITHUB_ENV"
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: ${{ env.NODE_VERSION }}
           cache: npm
       - name: Run npm ci
         run: npm ci
