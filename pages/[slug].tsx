@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { AiOutlineCalendar } from "react-icons/ai";
 
-import Content from "../components/content";
+import Content from "../components/Content";
 import useUrlFragmentScroll from "../hooks/useUrlFragmentScroll";
 import { getPostBySlug, getPosts, Post as Slug } from "../lib/post";
 

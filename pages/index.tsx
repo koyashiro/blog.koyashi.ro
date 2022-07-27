@@ -3,7 +3,7 @@ import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { AiOutlineCalendar } from "react-icons/ai";
 
-import A from "../components/a";
+import A from "../components/A";
 import { getPosts, Post } from "../lib/post";
 
 type Props = {

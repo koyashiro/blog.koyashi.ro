@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
 import { ReactNode, FC } from "react";
 
-import Footer from "./footer";
-import Header from "../components/header";
-import Main from "./main";
+import Footer from "./Footer";
+import Header from "../components/Header";
+import Main from "./Main";
 
 type Props = { children: ReactNode };
 

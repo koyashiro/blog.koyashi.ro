@@ -3,18 +3,18 @@ import { createElement, FC, Fragment } from "react";
 import rehypeReact from "rehype-react";
 import { unified } from "unified";
 
-import A from "./a";
-import Code from "./code";
-import H1 from "./h1";
-import H2 from "./h2";
-import H3 from "./h3";
-import H4 from "./h4";
-import H5 from "./h5";
-import H6 from "./h6";
-import Li from "./li";
-import Ol from "./ol";
-import P from "./p";
-import Ul from "./ul";
+import A from "./A";
+import Code from "./Code";
+import H1 from "./H1";
+import H2 from "./H2";
+import H3 from "./H3";
+import H4 from "./H4";
+import H5 from "./H5";
+import H6 from "./H6";
+import Li from "./Li";
+import Ol from "./Ol";
+import P from "./P";
+import Ul from "./Ul";
 
 type Props = {
   content: HastRoot;
