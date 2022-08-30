@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "11.10.0",
+    "@emotion/react": "11.10.4",
     "gray-matter": "4.0.3",
     "modern-css-reset": "1.4.0",
     "next": "12.2.5",
