@@ -1,6 +1,44 @@
-@import "modern-css-reset";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans", Meiryo, sans-serif;
+h1 {
+  @apply text-4xl font-extrabold;
+}
+
+h2 {
+  @apply text-2xl font-bold mt-14 first:mt-0 pb-2;
+}
+
+h3 {
+  @apply text-xl font-bold mt-10;
+}
+
+h4 {
+  @apply text-lg font-semibold mt-8;
+}
+
+h5 {
+  @apply text-base mt-8;
+}
+
+h6 {
+  @apply text-base mt-8;
+}
+
+p,
+ol,
+ul,
+table,
+pre {
+  @apply mt-6;
+}
+
+pre {
+  @apply overflow-auto border border-gray-400 p-3;
+}
+
+th,
+td {
+  @apply border border-gray-400 px-4 py-1;
 }

@@ -1,24 +1,22 @@
-import { css } from "@emotion/react";
 import { ReactNode, FC } from "react";
-
-import Footer from "./Footer";
-import Header from "../components/Header";
-import Main from "./Main";
+import Link from "next/link";
 
 type Props = { children: ReactNode };
 
 const Layout: FC<Props> = ({ children }) => {
   return (
-    <div>
-      <Header />
-      <Main
-        css={css`
-          margin-top: 8px;
-        `}
-      >
-        {children}
-      </Main>
-      <Footer />
+    <div className="container mx-auto max-w-screen-lg">
+      <header className="flex justify-center py-8">
+        <Link href="/" className="text-4xl font-extrabold hover:underline">
+          {"koyashiro's blog"}
+        </Link>
+      </header>
+
+      <main>{children}</main>
+
+      <footer className="flex justify-center mt-4">
+        <small className="text-base">{"© koyashiro"}</small>
+      </footer>
     </div>
   );
 };

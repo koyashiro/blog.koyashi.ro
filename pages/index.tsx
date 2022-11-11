@@ -1,9 +1,8 @@
-import { css } from "@emotion/react";
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import { AiOutlineCalendar } from "react-icons/ai";
 
-import A from "../components/A";
 import { getPosts, Post } from "../lib/post";
 
 type Props = {
@@ -22,45 +21,25 @@ const Home: NextPage<Props> = ({ posts }) => {
         <title>blog.koyashi.ro</title>
       </Head>
 
-      <div>
+      <div className="border-y-2 divide-y-2">
         {posts.map((p) => {
           const date = new Date(p.date);
+
           return (
-            <div key={p.slug}>
-              <A
+            <div key={p.slug} className="py-2">
+              <Link
                 href={`/${p.slug}`}
-                css={css`
-                  font-size: 1.6rem;
-                  font-weight: 600;
-                `}
+                className="font-bold text-2xl text-gray-700 hover:text-gray-900 hover:underline"
               >
                 {p.title}
-              </A>
+              </Link>
 
-              <div
-                css={css`
-                  display: flex;
-                  align-items: center;
-                  color: #5b5b5b;
-                `}
-              >
+              <div className="flex items-center space-x-1 mt-1">
                 <AiOutlineCalendar />
-                <span
-                  title={date.toLocaleString()}
-                  css={css`
-                    margin-left: 4px;
-                  `}
-                  suppressHydrationWarning
-                >
-                  {date.toDateString()}
-                </span>
+                <time title={date.toISOString()} dateTime={date.toISOString()}>
+                  {date.toISOString().slice(0, 10)}
+                </time>
               </div>
-
-              <hr
-                css={css`
-                  margin-bottom: 20px;
-                `}
-              />
             </div>
           );
         })}

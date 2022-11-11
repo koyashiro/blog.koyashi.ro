@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { AiOutlineCalendar } from "react-icons/ai";
@@ -51,36 +50,17 @@ const Slug: NextPage<Props> = ({ post }) => {
       </Head>
 
       <article>
-        <h1
-          css={css`
-            margin: 0;
-            font-size: 2.5rem;
-            &:before {
-              margin-right: 8px;
-              content: "#";
-            }
-          `}
-        >
-          {post.title}
-        </h1>
+        <div className="py-6">
+          <h1 className="before:mr-2 before:content-['#'] hover:underline">
+            {post.title}
+          </h1>
 
-        <div
-          css={css`
-            display: flex;
-            align-items: center;
-            color: #5b5b5b;
-          `}
-        >
-          <AiOutlineCalendar />
-          <span
-            title={date.toLocaleString()}
-            css={css`
-              margin-left: 4px;
-            `}
-            suppressHydrationWarning
-          >
-            {date.toDateString()}
-          </span>
+          <div className="flex items-center space-x-1 mt-1">
+            <AiOutlineCalendar />
+            <time title={date.toISOString()} dateTime={date.toISOString()}>
+              {date.toISOString().slice(0, 10)}
+            </time>
+          </div>
         </div>
 
         <Content content={post.content} />
