@@ -35,7 +35,7 @@ pre {
 }
 
 pre {
-  @apply overflow-auto border border-gray-400 p-3;
+  @apply overflow-auto p-4 bg-slate-100 rounded-md;
 }
 
 th,
