@@ -31,7 +31,7 @@ export const getPosts: () => Promise<Post[]> = async () => {
         throw new Error("post is undefined");
       }
       return post;
-    })
+    }),
   );
 
   posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -45,7 +45,7 @@ export const getPosts: () => Promise<Post[]> = async () => {
  * @returns
  */
 export const getPostBySlug: (
-  slug: string
+  slug: string,
 ) => Promise<Post | undefined> = async (slug) => {
   const filePath = path.join(POSTS_DIR, `${slug}.md`);
   const file = await fs.readFile(filePath);

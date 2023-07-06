@@ -28,7 +28,7 @@ const A: FC<ComponentProps<"a">> = (props) => {
         rel="noreferrer"
         className={classNames(
           "flex items-center space-x-2 hover:underline",
-          props.className
+          props.className,
         )}
       >
         <span>{props.children}</span>
@@ -46,7 +46,7 @@ const H2: FC<ComponentProps<"h2">> = (props) => {
       id={id}
       className={classNames(
         "border-b-2 before:content-['##'] before:mr-2 hover:underline",
-        props.className
+        props.className,
       )}
     >
       <a href={`#${id}`}>{props.children}</a>
@@ -62,7 +62,7 @@ const H3: FC<ComponentProps<"h3">> = (props) => {
       id={id}
       className={classNames(
         "before:content-['###'] before:mr-2",
-        props.className
+        props.className,
       )}
     >
       <a href={`#${id}`}>{props.children}</a>
