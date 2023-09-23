@@ -1,7 +1,8 @@
 import { Root as HastRoot } from "hast";
 import rehypeReact from "rehype-react";
 import { unified } from "unified";
-import { ComponentProps, createElement, FC, Fragment } from "react";
+import { ComponentProps, createElement, FC } from "react";
+import * as prod from "react/jsx-runtime";
 import Link from "next/link";
 import { BiLinkExternal } from "react-icons/bi";
 
@@ -76,14 +77,16 @@ type Props = {
 
 const Content: FC<Props> = ({ content }) => {
   const element = unified()
+    // @ts-expect-error: the react types are missing.
     .use(rehypeReact, {
+      // @ts-expect-error: the react types are missing.
+      Fragment: prod.Fragment,
+      // @ts-expect-error: the react types are missing.
+      jsx: prod.jsx,
+      // @ts-expect-error: the react types are missing.
+      jsxs: prod.jsxs,
       createElement,
-      Fragment,
-      components: {
-        a: A,
-        h2: H2,
-        h3: H3,
-      },
+      components: { a: A, h2: H2, h3: H3 },
     })
     .stringify(content);
 
