@@ -14,15 +14,15 @@ date: "2022-08-12T22:45:00+09:00"
 
 | ネットワーク | ネットワークアドレス |
 | ------------ | -------------------- |
-| 自宅 LAN     | `192.168.58.0/24`    |
-| WireGuard    | `192.168.59.0/24`    |
+| 自宅 LAN     | `192.168.1.0/24`     |
+| WireGuard    | `192.168.2.0/24`     |
 
 WireGuard で使う IP アドレスは以下を使用する。
 
-| デバイス     | IP アドレス    |
-| ------------ | -------------- |
-| サーバー     | `192.168.59.1` |
-| クライアント | `192.168.59.2` |
+| デバイス     | IP アドレス   |
+| ------------ | ------------- |
+| サーバー     | `192.168.2.1` |
+| クライアント | `192.168.2.2` |
 
 ### WireGuard のインストール
 
@@ -54,7 +54,7 @@ wg genkey | (umask 077 && tee client.key) | pubkey >client.pub
 
 サーバー用の設定ファイルを作成する。
 
-WireGuard のネットワーク(`192.168.59.0/24`) から自宅 LAN へのフォワーディングのため、 `iptables` を使用する。
+WireGuard のネットワーク(`192.168.2.0/24`) から自宅 LAN へのフォワーディングのため、 `iptables` を使用する。
 
 Raspberry Pi OS（のベースである Debian 11 bullseye）にはデフォルトでインストールされていないため、必要に応じてインストールする。
 `ufw` を使っている場合、依存関係で `iptables` も一緒にインストールされていはず。
@@ -65,7 +65,7 @@ apt install iptables
 
 ```conf
 [Interface]
-Address = 192.168.59.1/24
+Address = 192.168.2.1/24
 ListenPort = 51820
 PrivateKey = $SERVER_PRIVKEY
 PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
@@ -73,21 +73,21 @@ PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACC
 
 [Peer]
 PublicKey = $CLIENT_PUBKEY
-AllowedIPs = 192.168.59.2/32
+AllowedIPs = 192.168.2.2/32
 EOF
 ```
 
 ### クライアント用設定ファイルの作成
 
 クライアント用の設定ファイルを作成する。
-自宅インフラの名前解決のため、 `Interface.DNS` は LAN のルーター(`192.168.58.1`)を設定する。
+自宅インフラの名前解決のため、 `Interface.DNS` は LAN のルーター(`192.168.1.1`)を設定する。
 `Peer.Endpoint` は自宅のグローバル IP アドレスを設定する。
 
 ```conf
 [Interface]
 PrivateKey = $CLIENT_PRIVKEY
-Address = 192.168.59.2/32
-DNS = 192.168.58.1
+Address = 192.168.2.2/32
+DNS = 192.168.1.1
 
 [Peer]
 PublicKey = $SERVER_PUBKEY
