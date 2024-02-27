@@ -77,17 +77,17 @@ type Props = {
 
 const Content: FC<Props> = ({ content }) => {
   const element = unified()
-    // @ts-expect-error: the react types are missing.
-    .use(rehypeReact, {
+    .use(
+      rehypeReact,
       // @ts-expect-error: the react types are missing.
-      Fragment: prod.Fragment,
-      // @ts-expect-error: the react types are missing.
-      jsx: prod.jsx,
-      // @ts-expect-error: the react types are missing.
-      jsxs: prod.jsxs,
-      createElement,
-      components: { a: A, h2: H2, h3: H3 },
-    })
+      {
+        Fragment: prod.Fragment,
+        jsx: prod.jsx,
+        jsxs: prod.jsxs,
+        createElement,
+        components: { a: A, h2: H2, h3: H3 },
+      },
+    )
     .stringify(content);
 
   return <div className="first:mt-0">{element}</div>;
