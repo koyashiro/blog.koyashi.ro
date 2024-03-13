@@ -4,10 +4,10 @@ import { AiOutlineCalendar } from "react-icons/ai";
 
 import Content from "../components/Content";
 import useUrlFragmentScroll from "../hooks/useUrlFragmentScroll";
-import { getPostBySlug, getPosts, Post as Slug } from "../lib/post";
+import { getPostBySlug, getPosts, Post } from "../lib/post";
 
 type Props = {
-  post: Slug;
+  post: Post;
 };
 
 type Params = {
