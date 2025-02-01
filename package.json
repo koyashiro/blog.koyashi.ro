@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@types/hast": "3.0.4",
-    "@types/node": "20.17.16",
+    "@types/node": "22.13.0",
     "@types/react": "18.3.18",
     "@types/react-dom": "18.3.5",
     "autoprefixer": "10.4.20",
@@ -36,6 +36,6 @@
     "typescript": "5.7.3"
   },
   "volta": {
-    "node": "20.18.2"
+    "node": "22.13.1"
   }
 }
