@@ -15,4 +15,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
       - name: Check workflow files
-        uses: reviewdog/action-actionlint@320fcdd9c860767cf17fab3b20e22e739d5d02b8 # v1.76.0
+        uses: reviewdog/action-actionlint@5be522b94290e249dba9f5daded2f7157733e3d2 # v1.76.1
